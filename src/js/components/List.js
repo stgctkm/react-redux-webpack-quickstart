@@ -6,11 +6,11 @@ import { Component } from "react";
 const mapStateToProps = state => {
   return {articles : state.articles};
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    handleClick: id => dispatch(deleteArticle(id))
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     handleClick: id => dispatch(deleteArticle(id))
+//   };
+// };
 
 // const handleClick = (event) => {
 //   event.preventDefault();
@@ -47,12 +47,12 @@ class ConnectedList extends Component {
       {this.props.articles.map(element => (
           <li className='list-group-item' key={element.id} >
             {element.title}
-            <a href='#' onClick={() => this.props.handleClick(element.id)} data-value={element.id}>X</a>
+            <a href='#' onClick={() => this.props.dispatch(deleteArticle(element.id))} data-value={element.id}>X</a>
           </li>
       ))}
     </ul>
     )
   }
 }
-const List = connect(mapStateToProps, mapDispatchToProps)(ConnectedList)
+const List = connect(mapStateToProps)(ConnectedList)
 export default List;
