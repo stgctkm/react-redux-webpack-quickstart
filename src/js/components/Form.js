@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
 import { addArticle } from "../actions/index";
+
 const mapDispatchToProps = dispatch => {
   return {
     addArticle: article => dispatch(addArticle(article))
